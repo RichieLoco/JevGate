@@ -37,9 +37,9 @@ It calls the TypeSafe System One API directly with `WebRequest` and parses the J
 ┌───────────────────────────────────────────┐          ┌──────────────────────┐
 │ OnInit: AddNoul / AddChoice / AddScore    │          │ POST /v1/systemone   │
 │                                           │  HTTPS   │                      │
-│ Signal: jev.Begin / Add(features)         │ ───────▶ │ Jev evaluates every  │
+│ Signal: jev.Begin / Add(features)         │ ───────▶│ Jev evaluates every  │
 │         jev.Evaluate()  ── JSON request   │          │ question in parallel │
-│         jev.Get(...)    ◀─ JSON parsed ── │ ◀─────── │                      │
+│         jev.Get(...)    ◀─ JSON parsed ─ │ ◀─────── │                      │
 │         YOUR rule decides                 │          └──────────────────────┘
 └───────────────────────────────────────────┘
 ```
