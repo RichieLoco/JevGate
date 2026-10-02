@@ -1,0 +1,7 @@
+# secrets
+.env
+# MT5 data files (contain your strategy features)
+*.tsv
+# compiled MQL5
+*.ex5
+api_key.txt
