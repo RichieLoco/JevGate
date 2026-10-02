@@ -32,16 +32,16 @@ It calls the TypeSafe System One API directly with `WebRequest` and parses the J
 
 ## How it works
 
-```
- Your EA (MQL5)                                           TypeSafe API
-┌───────────────────────────────────────────┐          ┌──────────────────────┐
-│ OnInit: AddNoul / AddChoice / AddScore    │          │ POST /v1/systemone   │
-│                                           │  HTTPS   │                      │
-│ Signal: jev.Begin / Add(features)         │ ───────▶│ Jev evaluates every  │
-│         jev.Evaluate()  ── JSON request   │          │ question in parallel │
-│         jev.Get(...)    ◀─ JSON parsed ─ │ ◀─────── │                      │
-│         YOUR rule decides                 │          └──────────────────────┘
-└───────────────────────────────────────────┘
+```mermaid
+sequenceDiagram
+    participant EA as Your EA (MQL5)
+    participant API as TypeSafe API
+    Note over EA: OnInit: AddNoul / AddChoice / AddScore
+    Note over EA: Signal fires: jev.Begin() and Add(features)
+    EA->>API: jev.Evaluate() sends POST /v1/systemone (HTTPS, JSON)
+    Note over API: Jev evaluates every question in parallel
+    API-->>EA: JSON answers, parsed in MQL5
+    Note over EA: jev.Get(...) and YOUR rule decides
 ```
 
 **Your code computes the state. Jev judges it. Your code applies the policy. Your EA executes.**
